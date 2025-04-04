@@ -12,37 +12,63 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
       <div className="container">
-        <Link className="navbar-brand" to="/">Hostel Management System</Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <Link className="navbar-brand" to="/">
+          NIT JALANDHAR
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav me-auto">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link" to="/">Home</Link>
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#hostels">Hostels</a>
+              <a className="nav-link" href="#hostels">
+                Hostels
+              </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#announcements">Announcements</a>
+              <a className="nav-link" href="#announcements">
+                Announcements
+              </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#mess-menu">Mess Menu</a>
+              <a className="nav-link" href="#mess-menu">
+                Mess Menu
+              </a>
             </li>
           </ul>
-          <div className="d-flex">
+          <div className="d-flex align-items-center">
             {userInfo ? (
               <>
-                <Link to="/dashboard" className="btn btn-outline-light me-2">Dashboard</Link>
-                <button onClick={handleLogout} className="btn btn-light">Logout</button>
+                <Link to="/dashboard" className="btn btn-outline-light me-2">
+                  Dashboard
+                </Link>
+                <button onClick={handleLogout} className="btn btn-light">
+                  Logout
+                </button>
               </>
             ) : (
               <>
-                <Link to="/login" className="btn btn-outline-light me-2">Login</Link>
-                <Link to="/signup" className="btn btn-light">Sign Up</Link>
+                <Link to="/login" className="btn btn-outline-light me-2">
+                  Login
+                </Link>
+                <Link to="/signup" className="btn btn-light">
+                  Sign Up
+                </Link>
               </>
             )}
           </div>
@@ -52,4 +78,4 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar; 
+export default Navbar;

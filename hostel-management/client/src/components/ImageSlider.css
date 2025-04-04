@@ -1,0 +1,92 @@
+/* ImageSlider.css */
+.slider-container.fullscreen {
+  width: 100vw !important;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  max-height: 90vh;
+  display: block;
+}
+
+.slider-container.fullscreen .swiper,
+.fullscreen-swiper {
+  width: 100%;
+  height: 100%;
+  max-height: 90vh;
+}
+
+.slider-container.fullscreen .swiper-slide {
+  width: 100%;
+  height: 100%;
+  max-height: 90vh;
+}
+
+.slider-container.fullscreen img {
+  width: 100%;
+  height: 100%;
+  max-height: 90vh;
+  object-fit: cover;
+  object-position: center 20%; /* Position more toward the top */
+  display: block;
+}
+
+/* Make sure there's no gap */
+.slider-container.fullscreen + div {
+  margin-top: 0;
+}
+
+/* Custom Swiper Pagination - moved up a bit */
+.swiper-pagination {
+  bottom: 15px !important;
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #ffffff;
+}
+
+/* Adjust pagination on smaller screens */
+@media screen and (max-width: 576px) {
+  .swiper-pagination {
+    bottom: 8px !important;
+  }
+  
+  .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* Ensure slider takes full width even on larger screens */
+@media screen and (min-width: 1200px) {
+  .slider-container.fullscreen {
+    max-width: 100%;
+    width: 100vw;
+  }
+}
+
+/* Make sure navigation buttons are clearly visible */
+.slider-container .swiper-button-prev,
+.slider-container .swiper-button-next {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-container .swiper-button-prev:after,
+.slider-container .swiper-button-next:after {
+  font-size: 20px;
+} 

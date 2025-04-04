@@ -6,11 +6,12 @@ import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
+import './styles.css';
 
 const App: React.FC = () => {
   return (
     <AuthProvider>
-      <div className="container-fluid p-0">
+      <div className="container-full p-0 m-0 w-full">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />

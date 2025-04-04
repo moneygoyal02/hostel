@@ -1,0 +1,177 @@
+/* Navbar.css */
+
+/* Base Navbar Styles */
+.main-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  padding: 5px 0;
+  backdrop-filter: blur(5px);
+  height: 50px;
+}
+
+.main-navbar.scrolled {
+  background-color: rgba(25, 25, 112, 0.95);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 6px 0;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Logo */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.logo-icon {
+  margin-right: 8px;
+  font-size: 1.5rem;
+}
+
+.logo-text {
+  display: inline-block;
+}
+
+/* Nav Items: Always in a Row */
+.navbar-collapse {
+  display: flex;
+  align-items: center;
+  /* No fixed position or width here, so it stays in a row */
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Each nav item side by side */
+.nav-item {
+  margin: 0 5px;
+  position: relative;
+}
+
+.nav-item.active .nav-link {
+  color: #fff;
+}
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 3px;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #fff;
+}
+
+.nav-icon {
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+/* Buttons: Keep them in the same row as well */
+.navbar-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* spacing between buttons */
+}
+
+.user-info {
+  color: white;
+  font-size: 0.9rem;
+}
+
+/* Common Button Styling */
+.nav-btn {
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.nav-btn i {
+  margin-right: 6px;
+}
+
+.login-btn {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+}
+.login-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.signup-btn,
+.dashboard-btn {
+  background-color: white;
+  color: #191970;
+}
+.signup-btn:hover,
+.dashboard-btn:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+.logout-btn {
+  background-color: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  color: white;
+}
+.logout-btn:hover {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+/* Remove/override the hamburger menu styles 
+   so the nav remains in a single row for all screen sizes */
+.navbar-toggler {
+  display: none; /* hide hamburger icon entirely */
+}
+body {
+  padding-top: 56px;
+}
