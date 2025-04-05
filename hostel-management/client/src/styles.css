@@ -47,6 +47,34 @@ body {
   z-index: 1;
 }
 
+/* Hostel list styling */
+.hostel-list {
+  padding: 0 20px;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.hostel-list p {
+  margin-bottom: 15px;
+}
+
+.hostel-list span {
+  color: #0d6efd;
+  font-weight: bold;
+  display: inline-block;
+  width: 20px;
+}
+
+.hostel-list a {
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.hostel-list a:hover {
+  color: #0a58ca;
+  text-decoration: underline;
+}
+
 /* Add padding on pages without a fullscreen slider */
 .page-wrapper:not(:has(.slider-section)) .content-wrapper {
   padding-top: 50px; /* Updated for navbar height */

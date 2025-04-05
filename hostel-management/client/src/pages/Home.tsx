@@ -59,75 +59,93 @@ const Home: React.FC = () => {
       <div className="content-wrapper bg-white">
         <div className="container py-5 mx-auto">
           <section className="row mt-3 mb-5" id="hostels">
-            <h3 className="mb-4 text-center fw-bold">Our Hostels</h3>
             <div className="col-md-6 mb-4">
-              <div className="card h-100">
-                <div className="card-header bg-primary text-white">
-                  Boys' Hostels
-                </div>
-                <div className="card-body">
-                  <div className="row">
-                    {[...Array(7)].map((_, i) => (
-                      <div key={i} className="col-6 mb-2">
-                        <Link className="text-decoration-none" to={`/hostels/boys/${i + 1}`}>
-                          Hostel {i + 1}
-                        </Link>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              <h2 className="mb-4 fw-bold text-center">We Have Ten Boys' Hostels</h2>
+              <div className="hostel-list">
+                <p>
+                  <span className="me-2">→</span>
+                  <Link className="text-primary fw-medium" to="/hostels/boys/1">
+                    Boys Hostel 1
+                  </Link>
+                </p>
+                <p>
+                  <span className="me-2">→</span>
+                  <Link className="text-primary fw-medium" to="/hostels/boys/2">
+                    Boys Hostel 2
+                  </Link>
+                </p>
+                <p>
+                  <span className="me-2">→</span>
+                  <Link className="text-primary fw-medium" to="/hostels/boys/3">
+                    Boys Hostel 3
+                  </Link>
+                </p>
+                <p>
+                  <span className="me-2">→</span>
+                  <Link className="text-primary fw-medium" to="/hostels/boys/4">
+                    Boys Hostel 4
+                  </Link>
+                </p>
+                <p>
+                  <span className="me-2">→</span>
+                  <Link className="text-primary fw-medium" to="/hostels/boys/6">
+                    Boys Hostel 6
+                  </Link>
+                </p>
+                <p>
+                  <span className="me-2">→</span>
+                  <Link className="text-primary fw-medium" to="/hostels/boys/7">
+                    Boys Hostel 7
+                  </Link>
+                </p>
+                <p>
+                  <span className="me-2">→</span>
+                  <Link className="text-primary fw-medium" to="/hostels/boys/mega-a">
+                    Mega Boys Hostel: Block - A
+                  </Link>
+                </p>
+                <p>
+                  <span className="me-2">→</span>
+                  <Link className="text-primary fw-medium" to="/hostels/boys/mega-b">
+                    Mega Boys Hostel: Block - B
+                  </Link>
+                </p>
+                <p>
+                  <span className="me-2">→</span>
+                  <Link className="text-primary fw-medium" to="/hostels/boys/mega-f">
+                    Mega Boys Hostel: Block - F
+                  </Link>
+                </p>
               </div>
             </div>
             
             <div className="col-md-6 mb-4">
-              <div className="card h-100">
-                <div className="card-header bg-danger text-white">
-                  Girls' Hostels
-                </div>
-                <div className="card-body">
-                  <div className="row">
-                    <div className="col-6 mb-2">
-                      <Link className="text-decoration-none" to="/hostels/girls/mgha">
-                        Mega Girls Hostel A
-                      </Link>
-                    </div>
-                    <div className="col-6 mb-2">
-                      <Link className="text-decoration-none" to="/hostels/girls/mghb">
-                        Mega Girls Hostel B
-                      </Link>
-                    </div>
-                    <div className="col-6 mb-2">
-                      <Link className="text-decoration-none" to="/hostels/girls/mhba">
-                        MHB-A
-                      </Link>
-                    </div>
-                    <div className="col-6 mb-2">
-                      <Link className="text-decoration-none" to="/hostels/girls/mhbb">
-                        MHB-B
-                      </Link>
-                    </div>
-                    <div className="col-6 mb-2">
-                      <Link className="text-decoration-none" to="/hostels/girls/mhbf">
-                        MHB-F
-                      </Link>
-                    </div>
-                    <div className="col-6 mb-2">
-                      <Link className="text-decoration-none" to="/hostels/girls/mhg">
-                        MHG
-                      </Link>
-                    </div>
-                    <div className="col-6 mb-2">
-                      <Link className="text-decoration-none" to="/hostels/girls/ohwg1">
-                        OHW-G1
-                      </Link>
-                    </div>
-                    <div className="col-6 mb-2">
-                      <Link className="text-decoration-none" to="/hostels/girls/ohwg2">
-                        OHW-G2
-                      </Link>
-                    </div>
-                  </div>
-                </div>
+              <h2 className="mb-4 fw-bold text-center">We Have Four Girls' Hostels</h2>
+              <div className="hostel-list">
+                <p>
+                  <span className="me-2">→</span>
+                  <Link className="text-primary fw-medium" to="/hostels/girls/1">
+                    Girls Hostel 1
+                  </Link>
+                </p>
+                <p>
+                  <span className="me-2">→</span>
+                  <Link className="text-primary fw-medium" to="/hostels/girls/2">
+                    Girls Hostel 2
+                  </Link>
+                </p>
+                <p>
+                  <span className="me-2">→</span>
+                  <Link className="text-primary fw-medium" to="/hostels/girls/mega1">
+                    Mega Girls Hostel 1
+                  </Link>
+                </p>
+                <p>
+                  <span className="me-2">→</span>
+                  <Link className="text-primary fw-medium" to="/hostels/girls/mega-phase2">
+                    Mega Girls Hostel : Phase 2
+                  </Link>
+                </p>
               </div>
             </div>
           </section>
