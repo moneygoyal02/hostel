@@ -1,7 +1,8 @@
 import React, { useEffect, useContext } from 'react';
 import { Routes, Route, Navigate, useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import SliderManagement from './SliderManagement';
+import SliderManagement from '../components/warden/SliderManagement';
+import { UserInfo } from '../types';
 
 const Dashboard: React.FC = () => {
   const { userInfo, logout } = useContext(AuthContext);
@@ -91,8 +92,8 @@ const Dashboard: React.FC = () => {
           </div>
 
           <Routes>
-            <Route path="/" element={<DashboardHome userInfo={userInfo} />} />
-            <Route path="/slider" element={userInfo.role === 'chiefWarden' ? <SliderManagement /> : <Navigate to="/dashboard" replace />} />
+            <Route path="/" element={<DashboardHome userInfo={userInfo as AdminUserInfo} />} />
+            <Route path="/slider" element={userInfo.role === 'chiefWarden' ? <SliderManagement hostelId={userInfo.hostelId || ''} /> : <Navigate to="/dashboard" replace />} />
             {/* Add other routes as needed */}
           </Routes>
         </div>
@@ -101,15 +102,17 @@ const Dashboard: React.FC = () => {
   );
 };
 
+interface AdminUserInfo {
+  _id: string;
+  name: string;
+  email: string;
+  role: 'chiefWarden' | 'warden';
+  hostelId?: string;
+  token: string;
+}
+
 interface DashboardHomeProps {
-  userInfo: {
-    _id: string;
-    name: string;
-    email: string;
-    role: 'chiefWarden' | 'warden';
-    hostelId?: string;
-    token: string;
-  };
+  userInfo: AdminUserInfo;
 }
 
 const DashboardHome: React.FC<DashboardHomeProps> = ({ userInfo }) => {

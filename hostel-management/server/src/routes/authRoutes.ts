@@ -1,6 +1,7 @@
 import express from 'express';
-import { login, register, getProfile } from '../controllers/authController';
-import { protect } from '../middleware/auth';
+import { login, register, getProfile, getWardens } from '../controllers/authController';
+import { authenticateJWT, isChiefWarden } from '../middleware/auth';
+import { catchAsync } from '../utils/catchAsync';
 
 const router = express.Router();
 
@@ -11,6 +12,9 @@ router.post('/register', register);
 router.post('/login', login);
 
 // @route   GET /api/auth/profile
-router.get('/profile', protect, getProfile);
+router.get('/profile', authenticateJWT, catchAsync(getProfile));
+
+// @route   GET /api/auth/wardens
+router.get('/wardens', authenticateJWT, isChiefWarden, catchAsync(getWardens));
 
 export default router;

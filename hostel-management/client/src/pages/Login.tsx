@@ -2,11 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../context/AuthContext';
-
-interface LoginForm {
-  email: string;
-  password: string;
-}
+import { LoginForm } from '../types';
 
 const Login: React.FC = () => {
   const [error, setError] = useState<string>('');
@@ -17,7 +13,11 @@ const Login: React.FC = () => {
   useEffect(() => {
     // If user is already logged in, redirect to dashboard
     if (userInfo) {
-      navigate('/dashboard');
+      if (userInfo.role === 'warden' || userInfo.role === 'chiefWarden') {
+        navigate('/warden-dashboard');
+      } else {
+        navigate('/dashboard');
+      }
     }
   }, [userInfo, navigate]);
 
@@ -32,7 +32,9 @@ const Login: React.FC = () => {
     try {
       setError('');
       await login(data.email, data.password);
-      navigate('/dashboard');
+      // After login completes, userInfo will be updated in the context
+      // No need to check response.data since login function handles setting userInfo
+      // Navigation will happen in the useEffect that watches userInfo
     } catch (err: any) {
       setError(err.message || 'An error occurred during login');
     }
@@ -45,9 +47,15 @@ const Login: React.FC = () => {
           <div className="card shadow">
             <div className="card-body p-5">
               <h1 className="text-center mb-4">Hostel Management</h1>
-              <h2 className="h4 text-center mb-4">Warden Login</h2>
+              <h2 className="h4 text-center mb-4">Staff Login</h2>
               
               {error && <div className="alert alert-danger">{error}</div>}
+              
+              {loading && (
+                <div className="alert alert-info">
+                  Logging in... You will be redirected to your dashboard.
+                </div>
+              )}
               
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-3">

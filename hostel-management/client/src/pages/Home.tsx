@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import ImageSlider from '../components/ImageSlider';
 import axios from 'axios';
+import '../components/ImageSlider.css';
 
 interface SliderImage {
   _id: string;
@@ -34,30 +35,30 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className="page-wrapper overflow-hidden">
+    <div className="page-wrapper">
       <Navbar />
       
       {/* Full width slider section */}
-      <div className="slider-section">
+      <div className="slider-section mb-4" style={{ marginTop: '56px' }}>
         {loading ? (
-          <div className="loading-container" style={{ marginTop: '50px', height: 'calc(90vh - 50px)' }}>
+          <div className="loading-container d-flex justify-content-center align-items-center" style={{ height: '60vh' }}>
             <div className="spinner-border text-primary" role="status">
               <span className="visually-hidden">Loading...</span>
             </div>
           </div>
         ) : error ? (
-          <div className="error-container" style={{ marginTop: '50px', height: 'calc(90vh - 50px)' }}>
+          <div className="error-container d-flex justify-content-center align-items-center" style={{ height: '60vh' }}>
             <p className="text-danger">{error}</p>
           </div>
         ) : (
-          <div className="slider-wrapper w-full">
+          <div className="slider-wrapper">
             <ImageSlider images={images} fullScreen={true} />
           </div>
         )}
       </div>
       
       <div className="content-wrapper bg-white">
-        <div className="container py-5 mx-auto">
+        <div className="container py-3 mx-auto">
           <section className="row mt-3 mb-5" id="hostels">
             <div className="col-md-6 mb-4">
               <h2 className="mb-4 fw-bold text-center">We Have Ten Boys' Hostels</h2>

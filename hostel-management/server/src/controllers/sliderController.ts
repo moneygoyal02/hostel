@@ -47,15 +47,16 @@ export const getSliderImageById = async (req: Request, res: Response): Promise<v
 // @access  Private (Admin only)
 export const createSliderImage = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { image, caption, order } = req.body;
+    const { caption, order } = req.body;
+    const file = req.file;
 
-    if (!image) {
-      res.status(400).json({ message: 'Image is required' });
+    if (!file) {
+      res.status(400).json({ message: 'Image file is required' });
       return;
     }
 
     // Upload to Cloudinary
-    const result = await cloudinary.uploader.upload(image, {
+    const result = await cloudinary.uploader.upload(file.path, {
       folder: 'hostel-management/slider',
       use_filename: true,
       unique_filename: true
@@ -125,6 +126,35 @@ export const deleteSliderImage = async (req: Request, res: Response): Promise<vo
     res.json({ message: 'Image deleted successfully' });
   } catch (error) {
     console.error('Error deleting slider image:', error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+
+// @desc    Reorder slider images
+// @route   PUT /api/slider-images/reorder
+// @access  Private (Admin only)
+export const reorderSliderImages = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { images } = req.body;
+
+    if (!images || !Array.isArray(images)) {
+      res.status(400).json({ message: 'Images array is required' });
+      return;
+    }
+
+    // Update the order of each image
+    const updatePromises = images.map(({ id, order }) => 
+      SliderImage.findByIdAndUpdate(id, { order }, { new: true })
+    );
+
+    await Promise.all(updatePromises);
+
+    // Fetch updated images in the new order
+    const updatedImages = await SliderImage.find().sort({ order: 1 });
+    
+    res.json(updatedImages);
+  } catch (error) {
+    console.error('Error reordering slider images:', error);
     res.status(500).json({ message: 'Server Error' });
   }
 }; 

@@ -1,0 +1,12 @@
+/* Add to the top of the file */
+body {
+  padding-top: 56px; /* Height of the navbar */
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 60px; /* Slightly taller navbar on larger screens */
+  }
+}
+
+/* ...existing styles... */ 

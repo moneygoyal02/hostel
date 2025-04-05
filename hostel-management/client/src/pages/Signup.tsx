@@ -54,9 +54,18 @@ const Signup: React.FC = () => {
           <div className="card shadow">
             <div className="card-body p-5">
               <h1 className="text-center mb-4">Hostel Management</h1>
-              <h2 className="h4 text-center mb-4">Warden Signup</h2>
+              <h2 className="h4 text-center mb-4">Warden Registration</h2>
               
               {error && <div className="alert alert-danger">{error}</div>}
+              
+              <div className="alert alert-info mb-4">
+                <small>
+                  <strong>Registration Instructions:</strong><br/>
+                  • For Wardens: Use your official email (e.g., hwb1@nitj.ac.in for Boys Hostel 1)<br/>
+                  • For Chief Warden: Use chief.warden@nitj.ac.in<br/>
+                  • Your account will be automatically linked to the appropriate hostel
+                </small>
+              </div>
               
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-3">

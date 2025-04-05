@@ -1,14 +1,6 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import axios from 'axios';
-
-interface UserInfo {
-  _id: string;
-  name: string;
-  email: string;
-  role: 'chiefWarden' | 'warden';
-  hostelId?: string;
-  token: string;
-}
+import { UserInfo } from '../types';
 
 interface AuthContextType {
   userInfo: UserInfo | null;
@@ -83,14 +75,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setLoading(true);
       setError(null);
       
-      // Determine role based on email pattern
-      const isChiefWarden = email === 'chief.warden@nitj.ac.in';
-      
+      // Create the user
       const response = await axios.post('http://localhost:5000/api/auth/register', { 
         name, 
         email, 
-        password,
-        role: isChiefWarden ? 'chiefWarden' : 'warden'
+        password
       });
       
       const data = response.data as UserInfo;

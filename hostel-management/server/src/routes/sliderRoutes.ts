@@ -1,22 +1,18 @@
 import express from 'express';
-import {
-  getSliderImages,
-  getSliderImageById,
-  createSliderImage,
-  updateSliderImage,
-  deleteSliderImage
-} from '../controllers/sliderController';
-import { protect, chiefWardenOnly } from '../middleware/auth';
+import { authenticateJWT, isChiefWarden } from '../middleware/auth';
+import * as sliderController from '../controllers/sliderController';
+import { upload } from '../middleware/upload';
+import { catchAsync } from '../utils/catchAsync';
 
 const router = express.Router();
 
-// Public routes
-router.get('/', getSliderImages);
-router.get('/:id', getSliderImageById);
+// Public routes to get slider images
+router.get('/', catchAsync(sliderController.getSliderImages));
 
-// Protected routes (admin only)
-router.post('/', protect, chiefWardenOnly, createSliderImage);
-router.put('/:id', protect, chiefWardenOnly, updateSliderImage);
-router.delete('/:id', protect, chiefWardenOnly, deleteSliderImage);
+// Protected routes for chief warden only
+router.post('/', authenticateJWT, isChiefWarden, upload.single('image'), catchAsync(sliderController.createSliderImage));
+router.put('/:id', authenticateJWT, isChiefWarden, upload.single('image'), catchAsync(sliderController.updateSliderImage));
+router.delete('/:id', authenticateJWT, isChiefWarden, catchAsync(sliderController.deleteSliderImage));
+router.put('/reorder', authenticateJWT, isChiefWarden, catchAsync(sliderController.reorderSliderImages));
 
 export default router; 

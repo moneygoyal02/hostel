@@ -75,6 +75,108 @@ body {
   text-decoration: underline;
 }
 
+/* Hostel detail page styling */
+.hostel-slider-section {
+  margin-top: 50px; /* Adjust based on navbar height */
+}
+
+.hostel-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #212529;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.hostel-title:after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #0d6efd;
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+.section-heading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #212529;
+  position: relative;
+  padding-left: 15px;
+  border-left: 5px solid #0d6efd;
+}
+
+.warden-photo {
+  border: 3px solid #0d6efd;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.warden-message {
+  position: relative;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-left: 4px solid #0d6efd;
+  border-radius: 4px;
+}
+
+.warden-message:before {
+  content: '"';
+  font-size: 3rem;
+  color: #0d6efd;
+  opacity: 0.2;
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
+
+.facility-icon {
+  background-color: rgba(13, 110, 253, 0.1);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.gallery-item {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+  transition: all 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.staff-card {
+  transition: all 0.3s ease;
+}
+
+.staff-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.staff-photo {
+  border: 3px solid #0d6efd;
+  transition: all 0.3s ease;
+}
+
+.staff-card:hover .staff-photo {
+  transform: scale(1.05);
+}
+
 /* Add padding on pages without a fullscreen slider */
 .page-wrapper:not(:has(.slider-section)) .content-wrapper {
   padding-top: 50px; /* Updated for navbar height */
@@ -188,7 +290,17 @@ body {
   margin-bottom: 20px;
 }
 
-/* Responsive adjustments */
+/* Media queries for responsive design */
+@media (max-width: 992px) {
+  .hostel-title {
+    font-size: 2rem;
+  }
+  
+  .section-heading {
+    font-size: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .slider-container {
     height: 300px;
@@ -196,6 +308,24 @@ body {
   
   .slider-container.fullscreen {
     height: 90vh !important;
+  }
+  
+  .hostel-title {
+    font-size: 1.8rem;
+  }
+  
+  .warden-message {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hostel-title {
+    font-size: 1.5rem;
+  }
+  
+  .section-heading {
+    font-size: 1.3rem;
   }
 }
 

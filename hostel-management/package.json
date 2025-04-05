@@ -11,10 +11,18 @@
     "build": "cd client && npm run build && cd ../server && npm run build",
     "start": "cd server && npm start"
   },
-  "keywords": ["hostel", "management", "mern", "typescript"],
+  "keywords": [
+    "hostel",
+    "management",
+    "mern",
+    "typescript"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^8.0.0"
+  },
+  "dependencies": {
+    "express-fileupload": "^1.5.1"
   }
-} 
+}
